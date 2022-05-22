@@ -5,8 +5,8 @@ import { CreateTaskDto } from './dto/create-task.dto';
 
 @Injectable()
 export class TasksService {
-  private tasks: Task[] = [];
-  getAllTasks() {
+  tasks: Task[] = [];
+  getAllTasks(): Task[] {
     return this.tasks;
   }
   createTask(createTaskDto: CreateTaskDto): Task {
@@ -23,10 +23,12 @@ export class TasksService {
   findTaskById(id: string): Task {
     return this.tasks.find((task) => task.id === id);
   }
-  deleteByid(id: string): void {
+  deleteById(id: string): Task {
+    const dTask = this.tasks.find((task) => task.id === id);
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    return dTask;
   }
-  updateStatus(id: string, status: Status): Task {
+  updateStatus(id: string, status: Status) {
     const task = this.findTaskById(id);
     task.status = status;
     return task;
