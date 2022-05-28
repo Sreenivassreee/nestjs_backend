@@ -12,7 +12,7 @@ import { TasksModule } from './tasks/tasks.module';
       database: 'task-manager',
       password: 'postgres',
       username: 'postgres',
-      port: 5432,
+      port: 1111,
       synchronize: true,
       autoLoadEntities: true,
     }),
